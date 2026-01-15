@@ -61,7 +61,7 @@
 1. Firebase Console のプロジェクト設定（⚙️ > プロジェクトの設定）を開く
 2. 「マイアプリ」セクションで Web アプリを追加（まだ追加していない場合）
 3. 表示される `firebaseConfig` オブジェクトをコピー
-4. `index.html` の 116～131 行目あたりの `firebaseConfig` を差し替え
+4. `index.html` の 116～132 行目あたりの `firebaseConfig` を差し替え
 
 ```javascript
 const firebaseConfig = {
@@ -114,7 +114,7 @@ service cloud.firestore {
 
 ## 技術スタック
 
-- **Firebase SDK**: v9 compat（CDN経由で読み込み）
+- **Firebase SDK**: v9.23.0 compat（CDN経由で読み込み）
 - **Firebase Authentication**: メール/パスワード認証
 - **Firestore**: NoSQL データベース
 - **HTML/CSS/JavaScript**: バニラ JavaScript（フレームワーク不要）
