@@ -95,10 +95,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /quotes/{quoteId} {
-      // ログインユーザーのみ読み書き可能
-      allow read, write: if request.auth != null && request.resource.data.ownerUid == request.auth.uid;
-      // 既存データの読み取り・削除はownerUidが一致する場合のみ
-      allow read, delete: if request.auth != null && resource.data.ownerUid == request.auth.uid;
+      // ログインユーザーのみ自分のデータを読み取り可能
+      allow read: if request.auth != null && resource.data.ownerUid == request.auth.uid;
+      // ログインユーザーのみ自分のデータとして作成・更新可能
+      allow create, update: if request.auth != null && request.resource.data.ownerUid == request.auth.uid;
+      // ログインユーザーのみ自分のデータを削除可能
+      allow delete: if request.auth != null && resource.data.ownerUid == request.auth.uid;
     }
   }
 }
